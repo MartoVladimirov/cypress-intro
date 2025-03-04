@@ -9,7 +9,7 @@ const showError = (field, errorText) => {
     const errorElement = document.createElement("small");
     errorElement.classList.add("error-text");
     errorElement.innerText = errorText;
-    errorElement.setAttribute(`data-test-id`,`${field.getAttribute('data-test-id')}-error`)
+    errorElement.setAttribute(`data-test-id`, `${field.getAttribute('data-test-id')}-error`)
     field.closest(".form-group").appendChild(errorElement);
 }
 
@@ -46,6 +46,8 @@ const handleFormData = (e) => {
     }
     if (password === "") {
         showError(passwordInput, "Enter your password");
+    } else if (password.length < 8) {
+        showError(passwordInput, "Password is too short");
     }
     if (date === "") {
         showError(dateInput, "Select your date of birth");
